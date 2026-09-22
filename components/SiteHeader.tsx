@@ -7,12 +7,19 @@ import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import ScrollProgress from "@/components/ScrollProgress";
 import ThemeToggle from "@/components/ThemeToggle";
 
-const NAV = [
-  { href: "/projects", label: "Projects" },
+/**
+ * Education, Experience and Projects are sections of the home page, so they
+ * point at anchors and the pill tracks scroll position. Dashboards is its own
+ * page and matches on pathname like any normal route.
+ */
+const NAV: { href: string; label: string; section?: string }[] = [
+  { href: "/#education", label: "Education", section: "education" },
+  { href: "/#experience", label: "Experience", section: "experience" },
+  { href: "/#projects", label: "Projects", section: "projects" },
   { href: "/dashboards", label: "Dashboards" },
-  { href: "/experience", label: "Experience" },
-  { href: "/education", label: "Education" },
 ];
+
+const SECTIONS = NAV.map((n) => n.section).filter(Boolean) as string[];
 
 /**
  * Floating pill header.
@@ -30,8 +37,13 @@ export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(`${href}/`);
+  const [section, setSection] = useState<string | null>(null);
+  const onHome = pathname === "/";
+
+  const isActive = (item: (typeof NAV)[number]) =>
+    item.section
+      ? onHome && section === item.section
+      : pathname === item.href || pathname.startsWith(`${item.href}/`);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -39,6 +51,37 @@ export default function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  /**
+   * Scroll-spy for the home page. Tracks the set of sections currently on
+   * screen and lights the topmost one, rather than whichever entry fired
+   * last — with sections taller than the viewport, ordering by position is
+   * the only thing that stays stable scrolling up as well as down.
+   */
+  useEffect(() => {
+    if (!onHome) {
+      setSection(null);
+      return;
+    }
+    const nodes = SECTIONS.map((id) => document.getElementById(id)).filter(
+      (n): n is HTMLElement => n !== null
+    );
+    if (!nodes.length) return;
+
+    const visible = new Set<string>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) visible.add(e.target.id);
+          else visible.delete(e.target.id);
+        }
+        setSection(SECTIONS.find((id) => visible.has(id)) ?? null);
+      },
+      { rootMargin: "-20% 0px -60% 0px" }
+    );
+    nodes.forEach((n) => io.observe(n));
+    return () => io.disconnect();
+  }, [onHome]);
 
   useEffect(() => setOpen(false), [pathname]);
 
@@ -83,7 +126,7 @@ export default function SiteHeader() {
 
           <nav className="hidden items-center gap-1 md:flex">
             {NAV.map((item) => {
-              const active = isActive(item.href);
+              const active = isActive(item);
               return (
                 <Link
                   key={item.href}
@@ -148,9 +191,9 @@ export default function SiteHeader() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  aria-current={isActive(item.href) ? "page" : undefined}
+                  aria-current={isActive(item) ? "page" : undefined}
                   className={`block rounded-xl px-3 py-2.5 text-sm ${
-                    isActive(item.href)
+                    isActive(item)
                       ? "bg-primary-soft font-medium text-primary-text"
                       : "text-ink-2"
                   }`}

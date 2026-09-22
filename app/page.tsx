@@ -1,6 +1,8 @@
 import {
   profile,
   skills,
+  projects,
+  projectCategories,
 } from "@/lib/content";
 import PipelineFlow from "@/components/PipelineFlow";
 import TechMarquee from "@/components/TechMarquee";
@@ -11,6 +13,9 @@ import RoleRotator from "@/components/RoleRotator";
 import CartoonScene from "@/components/CartoonScene";
 import Portrait from "@/components/Portrait";
 import SectionHead from "@/components/SectionHead";
+import EducationCard from "@/components/EducationCard";
+import ExperienceTimeline from "@/components/ExperienceTimeline";
+import ProjectsExplorer from "@/components/ProjectsExplorer";
 
 export default function HomePage() {
   const marqueeItems = skills.flatMap((g) => g.items).filter((s) => s.length < 22);
@@ -186,6 +191,36 @@ export default function HomePage() {
         <Reveal delay={100} from="up" className="mt-10">
           <PipelineFlow />
         </Reveal>
+      </section>
+
+      {/* ── Education ────────────────────────────────────────────────────── */}
+      <section id="education" className="shell scroll-mt-24 border-t border-line py-16 sm:py-24">
+        <SectionHead eyebrow="Academics" title="Where I studied" hue={3} />
+        <ol className="mt-10 flex flex-col gap-5">
+          {profile.education.map((ed, i) => (
+            <li key={ed.school}>
+              <Reveal delay={i * 110} from="up">
+                <EducationCard ed={ed} />
+              </Reveal>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* ── Experience ───────────────────────────────────────────────────── */}
+      <section id="experience" className="shell scroll-mt-24 border-t border-line py-16 sm:py-24">
+        <SectionHead eyebrow="Career" title="Where I have worked" hue={0} />
+        <div className="mt-10">
+          <ExperienceTimeline headingLevel="h3" />
+        </div>
+      </section>
+
+      {/* ── Projects ─────────────────────────────────────────────────────── */}
+      <section id="projects" className="shell scroll-mt-24 border-t border-line py-16 sm:py-24">
+        <SectionHead eyebrow="Portfolio" title="What I have built" hue={1} />
+        <div className="mt-10">
+          <ProjectsExplorer projects={projects} categories={projectCategories} />
+        </div>
       </section>
 
       {/* ── Toolkit ──────────────────────────────────────────────────────── */}
