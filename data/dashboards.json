@@ -18,7 +18,14 @@
     ],
     "image": "/dashboards/customer-behavior.jpg",
     "embedUrl": null,
-    "liveUrl": null
+    "liveUrl": null,
+    "audience": "Retail marketing & merchandising",
+    "builtOn": "Transactional extract shaped in Power Query, measures in DAX",
+    "answers": [
+      "Which age groups and categories drive revenue, not just volume?",
+      "Do subscribers spend differently from one-off buyers?",
+      "How do shipping choice and gender shift the average basket?"
+    ]
   },
   {
     "id": "d08-weather-aqi",
@@ -39,7 +46,14 @@
     ],
     "image": "/dashboards/weather-aqi.jpg",
     "embedUrl": null,
-    "liveUrl": "/reports/live-weather-air-quality.pdf"
+    "liveUrl": "/reports/live-weather-air-quality.pdf",
+    "audience": "Environmental analysts & the pipeline's own operators",
+    "builtOn": "Hourly API ingest into a 4-layer S3 lake, read through 6 Athena views",
+    "answers": [
+      "Which of the 8 cities has the worst air quality, and by how far?",
+      "How do temperature, humidity, wind and rainfall compare across countries?",
+      "Did last night's ingest run clean, or did a check fail?"
+    ]
   },
   {
     "id": "d11-wildfires",
@@ -58,7 +72,14 @@
     ],
     "image": null,
     "embedUrl": null,
-    "liveUrl": null
+    "liveUrl": null,
+    "audience": "Public-safety and land-management planners",
+    "builtOn": "Seven years of fire records joined to weather APIs in PostgreSQL",
+    "answers": [
+      "Which counties lose the most acreage, and is that changing?",
+      "When in the year does fire risk actually peak?",
+      "How closely does weather track fire activity?"
+    ]
   },
   {
     "id": "d12-amazon-prime",
@@ -80,7 +101,14 @@
     ],
     "image": "/dashboards/amazon-prime.jpg",
     "embedUrl": null,
-    "liveUrl": null
+    "liveUrl": null,
+    "audience": "Content strategy & acquisitions",
+    "builtOn": "9,655-title catalogue shaped in Power Query, measures in DAX",
+    "answers": [
+      "How fast is the catalogue growing, and is it tilting to film or TV?",
+      "Which genres and content ratings dominate the library?",
+      "Where in the world does the catalogue come from?"
+    ]
   },
   {
     "id": "d14-airport",
@@ -99,7 +127,14 @@
     ],
     "image": null,
     "embedUrl": null,
-    "liveUrl": null
+    "liveUrl": null,
+    "audience": "Airport operations",
+    "builtOn": "Python ETL over a hybrid MySQL + MongoDB schema",
+    "answers": [
+      "Which terminals are driving delay, and when?",
+      "How is passenger throughput trending against capacity?",
+      "Is on-time performance improving or slipping?"
+    ]
   },
   {
     "id": "d15-ds-salaries",
@@ -122,6 +157,13 @@
     ],
     "image": "/dashboards/ds-salaries.jpg",
     "embedUrl": null,
-    "liveUrl": null
+    "liveUrl": null,
+    "audience": "Candidates & compensation benchmarking",
+    "builtOn": "Global salary survey modelled in Tableau with a Mapbox geography layer",
+    "answers": [
+      "What does this role pay at my experience level?",
+      "Which countries pay most, and where are these people based?",
+      "Is the market senior-heavy, full-time, and at large companies?"
+    ]
   }
 ]

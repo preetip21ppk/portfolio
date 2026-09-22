@@ -47,6 +47,12 @@ export type Dashboard = {
   highlight: string;
   description: string;
   views: string[];
+  /** Business questions the report answers — the BI view, not the build story. */
+  answers: string[];
+  /** Who actually reads it. */
+  audience: string;
+  /** The data layer underneath, in one line. */
+  builtOn: string;
   image: string | null;
   /** iframe src for an embeddable dashboard (Power BI "Publish to web", Tableau Public). */
   embedUrl: string | null;

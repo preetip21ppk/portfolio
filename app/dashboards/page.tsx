@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { dashboards } from "@/lib/content";
 import DashboardCard from "@/components/DashboardCard";
-import TiltCard from "@/components/TiltCard";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Dashboards",
   description:
-    "Power BI and Tableau dashboards across retail, health research, air quality, OTT media, climate, and aviation.",
+    "Power BI and Tableau reports — what each one answers, who reads it, and the data layer underneath.",
 };
 
 export default function DashboardsPage() {
@@ -20,10 +19,10 @@ export default function DashboardsPage() {
         </h1>
       </div>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-6 lg:grid-cols-2">
         {dashboards.map((d, i) => (
           <Reveal key={d.id} delay={Math.min((i % 3) * 90, 270)} from="up" className="h-full">
-            <TiltCard><DashboardCard dashboard={d} /></TiltCard>
+            <DashboardCard dashboard={d} />
           </Reveal>
         ))}
       </div>
