@@ -1,0 +1,127 @@
+[
+  {
+    "id": "d06-customer-behavior",
+    "name": "Customer Behavior Analytics",
+    "tool": "Power BI",
+    "source": "Customer Behavior Analytics Dashboard",
+    "projectId": "customer-behavior-dashboard",
+    "domain": "Retail",
+    "sort": "2026-05",
+    "highlight": "Segmentation to subscription trends",
+    "description": "Transactional data cleaned in Power Query and modeled in DAX into KPI metrics with cross-filtering across segments, revenue, and subscriptions.",
+    "views": [
+      "Customer segmentation",
+      "Purchasing behavior",
+      "Revenue performance",
+      "Sales performance",
+      "Subscription trends"
+    ],
+    "image": "/dashboards/customer-behavior.jpg",
+    "embedUrl": null,
+    "liveUrl": null
+  },
+  {
+    "id": "d08-weather-aqi",
+    "name": "Weather & Air Quality Monitor",
+    "tool": "Power BI",
+    "source": "Live Weather and Air Quality Analytics Platform",
+    "projectId": "weather-aqi-platform",
+    "domain": "Environmental",
+    "sort": "2025-12-02",
+    "highlight": "8 cities, 100% DQ pass rate",
+    "description": "Five-page operational report over a 4-layer S3 lake and 6 Athena views: catalog KPIs, weather trends, air-quality analysis down to PM2.5 and PM10, country-level city comparison, and a pipeline page tracking 64 API runs and 88 data-quality checks.",
+    "views": [
+      "Overview KPIs",
+      "Weather trends",
+      "Air quality analysis",
+      "City comparison",
+      "Pipeline & data quality"
+    ],
+    "image": "/dashboards/weather-aqi.jpg",
+    "embedUrl": null,
+    "liveUrl": "/reports/live-weather-air-quality.pdf"
+  },
+  {
+    "id": "d11-wildfires",
+    "name": "California Wildfire Analysis",
+    "tool": "Tableau",
+    "source": "California Wildfires Prediction & Analysis",
+    "projectId": "california-wildfires",
+    "domain": "Climate & Public Safety",
+    "sort": "2025-06-01",
+    "highlight": "4,000+ acres burned mapped",
+    "description": "County-level view of burned acreage and seasonality, backed by a 7-year ETL that enriches fire records with weather API features.",
+    "views": [
+      "Acres burned by county",
+      "Peak-month seasonality",
+      "Weather-fire correlation"
+    ],
+    "image": null,
+    "embedUrl": null,
+    "liveUrl": null
+  },
+  {
+    "id": "d12-amazon-prime",
+    "name": "Amazon Prime Content Analytics",
+    "tool": "Power BI",
+    "source": "Amazon Prime Movies & TV Shows Analytics Dashboard",
+    "projectId": "amazon-prime-dashboard",
+    "domain": "Media & OTT",
+    "sort": "2025-06-02",
+    "highlight": "9,655 titles, 519 genres",
+    "description": "Explores Amazon Prime Video's catalog across 1920–2021: an area chart of titles added per release year split Movie versus TV Show, a donut showing the 80.8% / 19.2% type mix, bar charts by content rating and by genre, a world map of origin country, and KPI cards for 9,655 titles, 25 ratings, genres and directors.",
+    "views": [
+      "Titles by release year (Movie vs TV)",
+      "Content-type split",
+      "Titles by content rating",
+      "Titles by genre",
+      "Origin country map",
+      "Catalog KPIs"
+    ],
+    "image": "/dashboards/amazon-prime.jpg",
+    "embedUrl": null,
+    "liveUrl": null
+  },
+  {
+    "id": "d14-airport",
+    "name": "Airport Operations KPIs",
+    "tool": "Power BI",
+    "source": "Airport Performance Optimization",
+    "projectId": "airport-performance",
+    "domain": "Aviation",
+    "sort": "2024-12",
+    "highlight": "Multi-terminal real-time KPIs",
+    "description": "Operational view of flight delays, passenger throughput, and on-time performance across terminals, fed by Python ETL over MySQL and MongoDB.",
+    "views": [
+      "Flight delay analysis",
+      "Passenger throughput",
+      "On-time performance"
+    ],
+    "image": null,
+    "embedUrl": null,
+    "liveUrl": null
+  },
+  {
+    "id": "d15-ds-salaries",
+    "name": "Data Science Salaries Explorer",
+    "tool": "Tableau",
+    "source": "Data Science Job Salaries Dashboard",
+    "projectId": "ds-salaries-dashboard",
+    "domain": "Labour Market",
+    "sort": "2026-09-20",
+    "highlight": "$600K top average salary",
+    "description": "Seven linked views over global data-science compensation: salary by experience level and employment type, company-size and seniority mixes, a Mapbox map of average salary by country, a job-title salary table down to experience level, and the top 10 employee residences — all driven by location and job-title filters.",
+    "views": [
+      "Salary by experience & employment type",
+      "Salary by job title & level",
+      "Average salary by country map",
+      "Company size mix",
+      "Experience level mix",
+      "Employment type mix",
+      "Top 10 employee residence"
+    ],
+    "image": "/dashboards/ds-salaries.jpg",
+    "embedUrl": null,
+    "liveUrl": null
+  }
+]

@@ -1,0 +1,1567 @@
+@import "tailwindcss";
+
+/*
+ * Palette — vibrant on a cool-white plane. Single light theme.
+ *
+ *   plane   #F2F7FA   surface #FFFFFF
+ *   ink     #0F1A24   16.3:1 on plane
+ *   primary #0E9BB8   marks and bars (3.0:1); small text uses #0B5E70 (6.8:1)
+ *   accent  #EA6724   marks (3.0:1); links use #993A11
+ *   violet  #7C5CE6   secondary mark (4.3:1)
+ *
+ * Filled controls use the deeper -fill steps (#0C819A / #C75113) so white
+ * label text clears 4.5:1. `highlight` #F0B429 is decorative only and never
+ * carries text or meaning.
+ *
+ * The drifting colour fields are bold saturated tints. Text steps are set
+ * against the WORST composite those fields can produce (#C2D6E9 at the edges),
+ * not against bare plane, so every token holds >= 4.5:1 anywhere on the page —
+ * on the raw background and on glass alike.
+ */
+@theme {
+  /* Surfaces & ink */
+  --color-plane: #f2f7fa;
+  --color-surface: #ffffff;
+
+  --color-ink: #0f1a24;
+  --color-ink-2: #334759;
+  --color-ink-muted: #475a6b;
+  --color-line: #d3e1ea;
+  --color-rule: #b6cbd9;
+
+  /* Primary — vibrant cyan-teal */
+  --color-primary: #0e9bb8;
+  --color-primary-text: #0b5e70;
+  --color-primary-fill: #0c819a;
+  --color-primary-hover: #0a6d82;
+  --color-primary-soft: #dff2f7;
+  --color-primary-line: #a8dce7;
+
+  /* Accent — vibrant orange, for CTAs and links */
+  --color-accent: #ea6724;
+  --color-accent-text: #993a11;
+  --color-accent-fill: #c75113;
+  --color-accent-hover: #a84310;
+  --color-accent-soft: #fdeade;
+  --color-accent-line: #f6c9ad;
+
+  /*
+   * Six-hue categorical set. Each hue ships a mark step (>= 3:1 on glass, for
+   * bars/dots/rims) and a text step (>= 4.5:1 on glass, for labels). Validated
+   * against the busiest possible glass tile, not against bare white.
+   */
+  --color-teal: #0b8aa2;
+  --color-teal-text: #096b7d;
+  --color-violet: #7c5ce6;
+  --color-violet-text: #6741e2;
+  --color-orange: #d25905;
+  --color-orange-text: #a34504;
+  --color-rose: #e92b89;
+  --color-rose-text: #bc1366;
+  --color-green: #0c8f64;
+  --color-green-text: #0a704e;
+  --color-amber: #af6f08;
+  --color-amber-text: #895706;
+
+  --color-highlight: #f0b429;
+
+  /* Label colour on a filled control */
+  --color-on-fill: #ffffff;
+
+  /* Apple-style glass: translucent fill + specular edge */
+  --color-glass: rgba(255, 255, 255, 0.52);
+  --color-glass-strong: rgba(255, 255, 255, 0.72);
+  --color-glass-shine: rgba(255, 255, 255, 0.9);
+  --color-glass-edge: rgba(255, 255, 255, 0.55);
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace;
+}
+
+/*
+ * ── Dark theme: deep sea ────────────────────────────────────────────────────
+ *
+ * Runtime switching works by re-declaring the --color-* custom properties that
+ * Tailwind's @theme generates, scoped to html[data-theme="dark"]. Every utility
+ * resolves through var(), so the whole site re-themes with no class changes.
+ *
+ * Validated against the darkest plane (#041620) AND the brightest lit glass
+ * (#1B4251): text tokens hold >= 4.5:1 on both, marks >= 3:1. Buttons invert —
+ * bright fill with near-black ink at 6.7-10.2:1.
+ */
+html[data-theme="dark"] {
+  --color-plane: #041620;
+  --color-surface: #0a2331;
+
+  --color-ink: #e6f4f8;
+  --color-ink-2: #afcbd6;
+  --color-ink-muted: #8aaebc;
+  --color-line: rgba(160, 220, 240, 0.16);
+  --color-rule: rgba(160, 220, 240, 0.3);
+
+  --color-primary: #22d3ee;
+  --color-primary-text: #67e8f9;
+  --color-primary-fill: #22d3ee;
+  --color-primary-hover: #67e8f9;
+  --color-primary-soft: rgba(34, 211, 238, 0.14);
+  --color-primary-line: rgba(34, 211, 238, 0.36);
+
+  --color-accent: #fb923c;
+  --color-accent-text: #fdba74;
+  --color-accent-fill: #fb923c;
+  --color-accent-hover: #fdba74;
+  --color-accent-soft: rgba(251, 146, 60, 0.14);
+  --color-accent-line: rgba(251, 146, 60, 0.36);
+
+  --color-teal: #22d3ee;
+  --color-teal-text: #67e8f9;
+  --color-violet: #a78bfa;
+  --color-violet-text: #c4b5fd;
+  --color-orange: #fb923c;
+  --color-orange-text: #fdba74;
+  --color-rose: #f472b6;
+  --color-rose-text: #f9a8d4;
+  --color-green: #34d399;
+  --color-green-text: #6ee7b7;
+  --color-amber: #fcd34d;
+  --color-amber-text: #fde68a;
+
+  --color-highlight: #fcd34d;
+  --color-on-fill: #041620;
+
+  --color-glass: rgba(120, 200, 225, 0.08);
+  --color-glass-strong: rgba(120, 200, 225, 0.14);
+  --color-glass-shine: rgba(190, 240, 255, 0.22);
+  --color-glass-edge: rgba(150, 220, 240, 0.2);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-plane);
+    /* Fixed decorative layers and the marquee track are wider than the
+       viewport by design; without this they add a horizontal scrollbar. */
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: clip;
+    background-color: transparent;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-primary-soft);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent-fill);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  /*
+   * Shared page shell. The cap scales with the viewport instead of stopping at
+   * a fixed 72rem, so large displays are actually used rather than leaving
+   * half the screen empty; padding grows with width so the content never runs
+   * into the edge.
+   */
+  .shell {
+    width: 100%;
+    max-width: 96rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 5rem);
+  }
+
+  /* Narrower measure for long-form paragraphs inside a wide shell */
+  .measure {
+    max-width: 46rem;
+  }
+
+  /*
+   * Glass surface. The saturation boost is what stops a blurred translucent
+   * panel reading as flat grey — it keeps the colour behind it alive through
+   * the blur. The inset top highlight is the specular edge that sells it as a
+   * material rather than an opacity trick.
+   *
+   * Measured: white @ 0.72 over the busiest possible background still leaves
+   * every text token at >= 5.6:1.
+   */
+  .card {
+    position: relative;
+    /*
+     * No white overlay gradient and no brightness lift here — those are what
+     * made the panels read as milk rather than glass. Transparency plus a high
+     * blur and a strong saturation boost is what actually looks like frosted
+     * glass: the colour behind stays alive through the blur.
+     */
+    background: var(--color-glass);
+    -webkit-backdrop-filter: blur(40px) saturate(220%);
+    backdrop-filter: blur(40px) saturate(220%);
+    border: 1px solid transparent;
+    border-radius: 1.25rem;
+    /*
+     * The border is a gradient, not a flat colour: bright at the top where
+     * light would catch the lip, fading to near-nothing at the bottom. Painted
+     * with two backgrounds and border-box/padding-box clipping, which is the
+     * only way to get a gradient border without a wrapper element.
+     */
+    background-clip: padding-box;
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.85),
+      inset 0 -1px 0 0 rgba(15, 26, 36, 0.05),
+      inset 0 0 22px 0 rgba(255, 255, 255, 0.28),
+      0 1px 2px rgba(15, 26, 36, 0.05),
+      0 16px 40px -20px rgba(15, 26, 36, 0.28);
+  }
+
+  /* Gradient rim, drawn as a masked ring so it never tints the fill */
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 255, 255, 0.25) 35%,
+      rgba(14, 155, 184, 0.18) 70%,
+      rgba(255, 255, 255, 0.5)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  /* Opaque escape hatch where translucency would hurt legibility */
+  .card-solid {
+    background-color: var(--color-surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-color: var(--color-line);
+  }
+
+  .glass {
+    background-color: var(--color-glass);
+    -webkit-backdrop-filter: blur(40px) saturate(220%);
+    backdrop-filter: blur(40px) saturate(220%);
+    border: 1px solid var(--color-glass-edge);
+    box-shadow: inset 0 1px 0 0 var(--color-glass-shine);
+  }
+
+  .glass-strong {
+    background-color: var(--color-glass-strong);
+    -webkit-backdrop-filter: blur(26px) saturate(190%);
+    backdrop-filter: blur(26px) saturate(190%);
+  }
+
+  .card-interactive {
+    transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+  }
+
+  .card-interactive {
+    transition:
+      border-color 260ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .card-interactive:hover {
+    border-color: var(--color-primary-line);
+    box-shadow:
+      inset 0 1px 0 0 var(--color-glass-shine),
+      0 0 0 1px rgba(14, 155, 184, 0.14),
+      0 22px 48px -22px rgba(14, 155, 184, 0.42);
+    transform: translateY(-5px) scale(1.012);
+  }
+
+  /*
+   * Eyebrow label, with the gold highlight as a small leading rule.
+   * This is the palette's only use of gold — decorative, never meaning-bearing.
+   */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 0.75rem;
+    height: 2px;
+    flex: none;
+    border-radius: 1px;
+    background-color: var(--color-highlight);
+  }
+
+  /* Animated bar fill for the chart components */
+  .bar-fill {
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .bar-fill[data-grown] {
+    transform: scaleX(1);
+  }
+}
+
+@layer utilities {
+  /* Traveling dot along a pipeline connector — vertical on mobile, horizontal from md */
+  .flow-dot {
+    animation: flow-y 2600ms cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @media (min-width: 768px) {
+    .flow-dot {
+      animation-name: flow-x;
+    }
+  }
+
+  .animate-rise {
+    animation: rise 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-fade {
+    animation: fade 900ms ease-out both;
+  }
+}
+
+@keyframes flow-x {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes flow-y {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .card-interactive:hover {
+    transform: none;
+  }
+
+  .flow-dot {
+    animation: none;
+    opacity: 0;
+  }
+
+  .bar-fill {
+    transition: none;
+    transform: scaleX(1);
+  }
+
+  .animate-rise,
+  .animate-fade {
+    animation: none;
+    opacity: 1;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@layer components {
+  /* Pointer-reactive card: subtle depth + a spotlight that follows the cursor */
+  .tilt {
+    --mx: 50%;
+    --my: 50%;
+    --rx: 0deg;
+    --ry: 0deg;
+    --spot: 0;
+    height: 100%;
+    transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+    transform-style: preserve-3d;
+    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tilt > * {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .tilt > *::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: var(--spot);
+    transition: opacity 260ms ease;
+    background: radial-gradient(
+      22rem circle at var(--mx) var(--my),
+      rgba(92, 122, 137, 0.12),
+      transparent 60%
+    );
+  }
+
+  /* Animated rule that draws itself under a section heading */
+  .rule-draw {
+    display: block;
+    height: 2px;
+    width: 3rem;
+    transform: scaleX(0);
+    transform-origin: left;
+    border-radius: 1px;
+    background: linear-gradient(
+      90deg,
+      var(--color-highlight),
+      var(--color-primary)
+    );
+    transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  [data-visible] .rule-draw,
+  .rule-draw[data-visible] {
+    transform: scaleX(1);
+  }
+
+  /* Slow drifting scan line over the hero grid */
+  .scanline::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    height: 14rem;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(92, 122, 137, 0.07),
+      transparent
+    );
+    animation: scan 9s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .marquee-track {
+    animation: marquee 42s linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes scan {
+  0% {
+    top: -14rem;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt {
+    transform: none !important;
+    transition: none;
+  }
+  .tilt > *::after {
+    display: none;
+  }
+  .marquee-track {
+    animation: none;
+  }
+  .scanline::after {
+    animation: none;
+    display: none;
+  }
+  .rule-draw {
+    transform: scaleX(1);
+    transition: none;
+  }
+}
+
+/* ---------------- Atmospheric background layer ---------------- */
+
+/*
+ * Colour strategy: the blobs are SATURATED TINTS, not mid-tones. A light,
+ * saturated colour adds obvious hue while barely moving luminance, so the page
+ * can look genuinely colourful without dragging text contrast down — which is
+ * exactly what the earlier slate-grey blobs failed to do (they read as grey
+ * fog and still cost contrast).
+ *
+ * A glacier scrim covers the whole viewport, strongest through the middle where
+ * the reading column sits and never dropping below 0.30 at the edges. Measured:
+ * centre plane holds >= 5.2:1 for every text token, edges >= 4.6:1.
+ */
+
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+.aurora-1 {
+  width: 52rem; height: 52rem; top: -20rem; left: -18rem;
+  background: radial-gradient(circle, rgba(126, 196, 216, 0.80), transparent 66%);
+  animation: drift-a 34s ease-in-out infinite alternate;
+}
+.aurora-2 {
+  width: 44rem; height: 44rem; top: -6rem; right: -16rem;
+  background: radial-gradient(circle, rgba(244, 164, 126, 0.70), transparent 66%);
+  animation: drift-b 41s ease-in-out infinite alternate;
+}
+.aurora-3 {
+  width: 48rem; height: 48rem; bottom: -22rem; left: 14%;
+  background: radial-gradient(circle, rgba(248, 208, 118, 0.68), transparent 66%);
+  animation: drift-c 47s ease-in-out infinite alternate;
+}
+.aurora-4 {
+  width: 40rem; height: 40rem; top: 38%; left: -14rem;
+  background: radial-gradient(circle, rgba(132, 205, 196, 0.72), transparent 66%);
+  animation: drift-d 38s ease-in-out infinite alternate;
+}
+.aurora-5 {
+  width: 38rem; height: 38rem; bottom: 2%; right: -12rem;
+  background: radial-gradient(circle, rgba(168, 180, 220, 0.72), transparent 66%);
+  animation: drift-b 52s ease-in-out infinite alternate-reverse;
+}
+.aurora-6 {
+  width: 30rem; height: 30rem; top: 58%; right: 22%;
+  background: radial-gradient(circle, rgba(126, 196, 216, 0.60), transparent 66%);
+  animation: drift-c 44s ease-in-out infinite alternate-reverse;
+}
+
+/*
+ * Readability guarantee — covers the entire viewport, never fully transparent,
+ * so no text can ever land on an unscrimmed blob.
+ */
+.aurora-scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 95% 105% at 50% 42%,
+    rgba(242, 247, 250, 0.42) 0%,
+    rgba(242, 247, 250, 0.36) 45%,
+    rgba(242, 247, 250, 0.34) 75%,
+    rgba(242, 247, 250, 0.32) 100%
+  );
+}
+
+.aurora-grain {
+  position: absolute;
+  inset: -100%;
+  opacity: 0.38;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  animation: grain 7s steps(6) infinite;
+}
+
+@keyframes drift-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(11rem, 7rem, 0) scale(1.24); }
+}
+@keyframes drift-b {
+  from { transform: translate3d(0, 0, 0) scale(1.12); }
+  to   { transform: translate3d(-10rem, 9rem, 0) scale(1); }
+}
+@keyframes drift-c {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(-12rem, -8rem, 0) scale(1.28); }
+}
+@keyframes drift-d {
+  from { transform: translate3d(0, 0, 0) scale(1.14); }
+  to   { transform: translate3d(9rem, -9rem, 0) scale(1); }
+}
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  20%  { transform: translate(-3%, 2%); }
+  40%  { transform: translate(2%, -3%); }
+  60%  { transform: translate(-2%, -2%); }
+  80%  { transform: translate(3%, 1%); }
+}
+
+/* ---------------- Headline: per-character reveal ---------------- */
+
+.char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.5em) rotate(4deg);
+  animation: char-in 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes char-in {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* ---------------- Magnetic button ---------------- */
+
+.magnetic {
+  --tx: 0px;
+  --ty: 0px;
+  transform: translate3d(var(--tx), var(--ty), 0);
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob,
+  .aurora-grain {
+    animation: none;
+  }
+  .char {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .magnetic {
+    transform: none;
+  }
+}
+
+/* ---------------- Hero visual: fly-in + continuous float ---------------- */
+
+.fly-in {
+  opacity: 0;
+  animation:
+    fly-in 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    float-y 7s ease-in-out infinite;
+}
+
+@keyframes fly-in {
+  from {
+    opacity: 0;
+    transform: translate3d(90px, 18px, 0) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Offset float cycles so the three cards never move in lockstep */
+.float-a { animation-duration: 900ms, 7.5s; }
+.float-b { animation-duration: 900ms, 9s; }
+.float-c { animation-duration: 900ms, 6.2s; }
+
+@keyframes float-y {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -10px; }
+}
+
+@keyframes chip-flow {
+  0%   { left: 0;    opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+/* Bars inside the hero card grow after the card lands */
+.grow-x {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: grow-x 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes grow-x {
+  to { transform: scaleX(1); }
+}
+
+/* Sparkline draws itself */
+.spark {
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: spark-draw 1600ms 1100ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes spark-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---------------- Section entrance accents ---------------- */
+
+/*
+ * Gradient wash for large headings.
+ * NOTE: do NOT combine with per-character animation — background-clip:text
+ * fails to paint across descendants that carry their own transform, which
+ * makes the text disappear entirely. Use on plain headings only.
+ */
+.headline-gradient {
+  background: linear-gradient(
+    100deg,
+    var(--color-ink) 0%,
+    var(--color-ink) 42%,
+    var(--color-primary) 78%,
+    var(--color-primary-text) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fly-in {
+    opacity: 1;
+    animation: none;
+  }
+  .grow-x {
+    transform: scaleX(1);
+    animation: none;
+  }
+  .spark {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}
+
+/* The dark scrim darkens rather than lightens, so stars stay legible */
+/* ---------------- Classic polish ---------------- */
+
+.card {
+  transition:
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+/* Shimmer sweep across a filled button on hover */
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 45%;
+  pointer-events: none;
+  transform: skewX(-18deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.38),
+    transparent
+  );
+  transition: left 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.shine:hover::after {
+  left: 125%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  .card {
+    transition: none;
+  }
+  .shine::after {
+    display: none;
+  }
+}
+
+/* ---------------- Hover vocabulary ---------------- */
+
+/* Link underline that wipes in from the left instead of just appearing */
+.link-sweep {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-sweep::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link-sweep:hover::after,
+.link-sweep:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Chip / tag lift */
+.chip {
+  transition:
+    border-color 200ms ease,
+    color 200ms ease,
+    transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 200ms ease;
+}
+
+.chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary-line);
+  color: var(--color-primary-text);
+  box-shadow: 0 6px 14px -8px rgba(14, 155, 184, 0.5);
+}
+
+/* Filled control: lift + deeper glow */
+.btn-lift {
+  transition:
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 200ms ease;
+}
+
+.btn-lift:hover {
+  transform: translateY(-2px);
+}
+
+.btn-lift:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* Shimmer sweep across a filled button */
+.shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 45%;
+  z-index: 1;
+  pointer-events: none;
+  transform: skewX(-18deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.42),
+    transparent
+  );
+  transition: left 640ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.shine:hover::after {
+  left: 125%;
+}
+
+/* ---------------- Page transitions ---------------- */
+
+/*
+ * app/template.tsx remounts on every navigation, so this animation replays
+ * per route change — a short lift and fade that makes navigation feel
+ * continuous instead of a hard cut.
+ */
+.page-enter {
+  animation: page-in 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0) scale(0.995);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link-sweep::after,
+  .chip,
+  .btn-lift {
+    transition: none;
+  }
+  .chip:hover,
+  .btn-lift:hover,
+  .btn-lift:active {
+    transform: none;
+  }
+  .shine::after {
+    display: none;
+  }
+  .page-enter {
+    animation: none;
+  }
+}
+
+/* ---------------- Floating 3D data objects ---------------- */
+
+.obj {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+
+/* Keep the objects clear of the text column on smaller screens */
+/* ---------------- Interactive boxes ---------------- */
+
+/*
+ * Any box that should feel "alive" on hover: a conic gradient border that
+ * sweeps around the edge, plus a lift. The gradient lives on a ::before behind
+ * the content so it reads as a lit rim rather than a painted background.
+ */
+.box-hover {
+  position: relative;
+  isolation: isolate;
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.box-hover::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 320ms ease;
+  background: conic-gradient(
+    from var(--edge-angle, 0deg),
+    var(--color-primary),
+    var(--color-violet),
+    var(--color-accent),
+    var(--color-highlight),
+    var(--color-primary)
+  );
+  animation: edge-spin 5s linear infinite paused;
+}
+
+.box-hover:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow:
+    inset 0 1px 0 0 var(--color-glass-shine),
+    0 26px 52px -24px rgba(14, 155, 184, 0.5);
+}
+
+.box-hover:hover::before {
+  opacity: 0.85;
+  animation-play-state: running;
+}
+
+@keyframes edge-spin {
+  to { --edge-angle: 360deg; }
+}
+
+@property --edge-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Number inside a stat tile pops on hover */
+.box-hover .stat-value {
+  transition: transform 280ms cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.box-hover:hover .stat-value {
+  transform: scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box-hover,
+  .box-hover .stat-value {
+    transition: none;
+  }
+  .box-hover:hover,
+  .box-hover:hover .stat-value {
+    transform: none;
+  }
+  .box-hover::before {
+    animation: none;
+  }
+}
+
+/* ---------------- Rotating role line ---------------- */
+
+.role-slide {
+  display: inline-block;
+  animation: role-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.role-out {
+  animation: role-out 360ms cubic-bezier(0.55, 0, 0.55, 0.2) both;
+}
+
+@keyframes role-in {
+  from { opacity: 0; transform: translateY(0.8em) rotateX(-40deg); }
+  to   { opacity: 1; transform: translateY(0) rotateX(0deg); }
+}
+
+@keyframes role-out {
+  from { opacity: 1; transform: translateY(0) rotateX(0deg); }
+  to   { opacity: 0; transform: translateY(-0.8em) rotateX(40deg); }
+}
+
+/* ---------------- Bento grid ---------------- */
+
+/*
+ * Mixed-size tile grid. Tiles declare their own span, so the composition is
+ * asymmetric without any manual positioning, and it collapses to a single
+ * column on small screens by falling back to auto placement.
+ */
+.bento {
+  display: grid;
+  gap: 0.875rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .bento { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1280px) {
+  .bento {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-rows: minmax(7.5rem, auto);
+  }
+}
+
+.bento-2 { grid-column: span 2; }
+.bento-3 { grid-column: span 2; }
+.bento-4 { grid-column: span 2; }
+.bento-tall { grid-row: span 1; }
+
+@media (min-width: 768px) {
+  .bento-3 { grid-column: span 4; }
+  .bento-4 { grid-column: span 4; }
+}
+
+@media (min-width: 1280px) {
+  .bento-2 { grid-column: span 2; }
+  .bento-3 { grid-column: span 3; }
+  .bento-4 { grid-column: span 4; }
+  .bento-tall { grid-row: span 2; }
+}
+
+/* Tile: glass, with a hue-tinted top rim that lights up on hover */
+.tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.125rem;
+  background: var(--color-glass);
+  -webkit-backdrop-filter: blur(40px) saturate(220%);
+  backdrop-filter: blur(40px) saturate(220%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.95),
+    0 14px 36px -20px rgba(15, 26, 36, 0.3);
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 320ms ease;
+}
+
+/* Solid hue rim across the full width — reads as a deliberate accent bar
+   rather than a smudge that fades out at both ends. */
+.tile::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 3px;
+  background: var(--tile-hue, var(--color-teal));
+  transition: height 320ms ease;
+}
+
+/* Hue wash that blooms from the top on hover */
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 340ms ease;
+  background: radial-gradient(
+    110% 60% at 50% 0%,
+    color-mix(in srgb, var(--tile-hue, var(--color-teal)) 13%, transparent),
+    transparent 72%
+  );
+}
+
+.tile:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--tile-hue, var(--color-teal)) 40%, white);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.95),
+    0 28px 60px -26px color-mix(in srgb, var(--tile-hue, var(--color-teal)) 55%, transparent);
+}
+
+.tile:hover::before { height: 5px; }
+.tile:hover::after { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tile,
+  .tile::before,
+  .tile::after {
+    transition: none;
+  }
+  .tile:hover { transform: none; }
+}
+
+/* Scroll cue dot */
+.scroll-dot {
+  animation: scroll-dot 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-dot {
+  0%, 100% { transform: translateY(-5px); opacity: 0; }
+  30%      { opacity: 1; }
+  70%      { transform: translateY(5px); opacity: 0.2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-dot { animation: none; }
+}
+
+/* ---------------- Adopted from the reference design ---------------- */
+
+/*
+ * Gradient wordmark. Safe here because MaskedHeading animates the *wrapper*,
+ * not this span — background-clip:text breaks when the clipped element itself
+ * carries a transform, which is what killed an earlier attempt at this.
+ */
+.heading-gradient {
+  background: linear-gradient(
+    100deg,
+    var(--color-teal) 0%,
+    var(--color-violet) 55%,
+    var(--color-rose) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/*
+ * Slow hue rotation over the colour fields. A single filter animation shifts
+ * every blob through neighbouring hues, so the palette breathes instead of
+ * sitting on four fixed colours — the cheapest way to make a static
+ * background feel alive.
+ */
+.aurora-blob {
+  animation-name: drift-a, aurora-hue;
+  animation-duration: 34s, 26s;
+  animation-timing-function: ease-in-out, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-direction: alternate, alternate;
+}
+
+@keyframes aurora-hue {
+  0%, 100% { filter: blur(80px) hue-rotate(0deg) saturate(1); }
+  50%      { filter: blur(80px) hue-rotate(28deg) saturate(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob { animation: none !important; }
+}
+
+/* ---------------- Deep-sea atmosphere ---------------- */
+
+/*
+ * God rays. Each is a skewed, heavily-blurred gradient column anchored above
+ * the viewport and swaying on its own cycle, so the group never pulses in
+ * unison. `screen` blending makes them add light instead of painting over.
+ */
+.sea-rays {
+  position: fixed;
+  inset: -20% 0 auto 0;
+  height: 130vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+
+.ray {
+  position: absolute;
+  top: -10%;
+  width: 14vw;
+  height: 120%;
+  transform-origin: top center;
+  filter: blur(26px);
+  opacity: 0.32;
+  background: linear-gradient(
+    to bottom,
+    rgba(120, 220, 245, 0.55),
+    rgba(120, 220, 245, 0.16) 45%,
+    transparent 78%
+  );
+}
+
+.ray-1 { left: 8%;  animation: ray-sway 17s ease-in-out infinite; }
+.ray-2 { left: 31%; width: 9vw;  animation: ray-sway 23s ease-in-out infinite reverse; }
+.ray-3 { left: 58%; width: 17vw; animation: ray-sway 20s ease-in-out infinite; }
+.ray-4 { left: 82%; width: 11vw; animation: ray-sway 26s ease-in-out infinite reverse; }
+
+@keyframes ray-sway {
+  0%, 100% { transform: rotate(-7deg) scaleY(1);    opacity: 0.22; }
+  50%      { transform: rotate(5deg)  scaleY(1.08); opacity: 0.4; }
+}
+
+/* Caustics: two offset radial fields drifting against each other, which is
+   how rippling surface light reads without a shader. */
+.sea-caustics {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.25;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(140, 230, 250, 0.4) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 60%, rgba(140, 230, 250, 0.32) 0 2px, transparent 3px);
+  background-size: 180px 180px, 240px 240px;
+  animation: caustic-drift 26s linear infinite;
+}
+
+@keyframes caustic-drift {
+  to { background-position: 180px 120px, -240px 200px; }
+}
+
+/* Depth: the column darkens toward the seabed */
+.sea-depth {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 42%,
+    rgba(4, 22, 32, 0.1) 72%,
+    rgba(4, 22, 32, 0.22) 100%
+  );
+}
+
+/* The whole effect belongs to dark mode; in light it stays a hint. */
+html:not([data-theme="dark"]) .sea-rays    { opacity: 0.3; }
+html:not([data-theme="dark"]) .sea-caustics{ opacity: 0.1; }
+html:not([data-theme="dark"]) .sea-depth   { display: none; }
+
+html[data-theme="dark"] .sea-rays     { opacity: 1; }
+html[data-theme="dark"] .sea-caustics { opacity: 0.32; }
+
+/* Dark mode: glass gets a cyan rim-light so panels read as lit from within */
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .tile {
+  box-shadow:
+    inset 0 1px 0 0 var(--color-glass-shine),
+    0 0 0 1px rgba(34, 211, 238, 0.07),
+    0 18px 44px -22px rgba(0, 0, 0, 0.9);
+}
+
+html[data-theme="dark"] .card-interactive:hover,
+html[data-theme="dark"] .tile:hover {
+  box-shadow:
+    inset 0 1px 0 0 var(--color-glass-shine),
+    0 0 0 1px rgba(34, 211, 238, 0.24),
+    0 26px 60px -24px rgba(0, 0, 0, 0.95),
+    0 0 42px -12px color-mix(in srgb, var(--tile-hue, var(--color-teal)) 45%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ray,
+  .sea-caustics {
+    animation: none;
+  }
+  .hl::before {
+    animation: none;
+    transform: scaleX(1) rotate(-0.4deg);
+  }
+}
+
+/* ---------------- Dark: the water column ---------------- */
+
+/*
+ * In dark mode the colour fields become the ocean itself — deep teal and
+ * indigo rather than the light tints used on the white plane — and the scrim
+ * darkens instead of lightening, so the depth gradient reads downward.
+ */
+html[data-theme="dark"] .aurora-1 {
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.30), transparent 68%);
+}
+html[data-theme="dark"] .aurora-2 {
+  background: radial-gradient(circle, rgba(56, 130, 246, 0.26), transparent 68%);
+}
+html[data-theme="dark"] .aurora-3 {
+  background: radial-gradient(circle, rgba(16, 90, 130, 0.42), transparent 68%);
+}
+html[data-theme="dark"] .aurora-4 {
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.24), transparent 68%);
+}
+html[data-theme="dark"] .aurora-5 {
+  background: radial-gradient(circle, rgba(13, 148, 176, 0.34), transparent 68%);
+}
+html[data-theme="dark"] .aurora-6 {
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.18), transparent 68%);
+}
+
+html[data-theme="dark"] .aurora-scrim {
+  background: radial-gradient(
+    ellipse 95% 105% at 50% 40%,
+    rgba(4, 22, 32, 0.46) 0%,
+    rgba(4, 22, 32, 0.56) 45%,
+    rgba(3, 16, 24, 0.72) 78%,
+    rgba(2, 12, 19, 0.85) 100%
+  );
+}
+
+html[data-theme="dark"] .aurora-grain { opacity: 0.16; }
+
+/* Chips and tracks need a light-on-dark treatment */
+html[data-theme="dark"] .chip {
+  background-color: rgba(150, 220, 240, 0.07) !important;
+  border-color: var(--color-line);
+  color: var(--color-ink-2);
+}
+
+html[data-theme="dark"] .chip:hover {
+  border-color: var(--color-primary-line);
+  color: var(--color-primary-text);
+  box-shadow: 0 6px 18px -8px rgba(34, 211, 238, 0.5);
+}
+
+html[data-theme="dark"] .panel-glass {
+  background: rgba(120, 200, 225, 0.06);
+  border-color: var(--color-line);
+  box-shadow:
+    inset 0 1px 0 0 var(--color-glass-shine),
+    0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dark"] .table-glass {
+  background: rgba(120, 200, 225, 0.05);
+  border-color: var(--color-line);
+}
+
+html[data-theme="dark"] .table-glass-head {
+  background: linear-gradient(
+    180deg,
+    rgba(150, 220, 240, 0.12),
+    rgba(150, 220, 240, 0.04)
+  );
+  border-bottom-color: var(--color-line);
+}
+
+html[data-theme="dark"] .row-glass::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(150, 220, 240, 0.14),
+    transparent
+  );
+}
+
+html[data-theme="dark"] .rule-soft {
+  background: linear-gradient(90deg, transparent, rgba(150, 220, 240, 0.18), transparent);
+}
+
+/* Headline gradient shifts to the bright end of the dark palette */
+html[data-theme="dark"] .heading-gradient {
+  background: linear-gradient(
+    100deg,
+    var(--color-teal) 0%,
+    var(--color-violet) 55%,
+    var(--color-rose) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+html[data-theme="dark"] .heading-accent {
+  background: linear-gradient(
+    100deg,
+    var(--color-ink) 0%,
+    var(--color-ink) 55%,
+    var(--color-primary-text) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Isometric hero scene — sized so it balances the text column */
+.iso-scene {
+  width: 100%;
+  height: clamp(22rem, 32vw, 30rem);
+}
+
+/* ---------------- Marker highlight ---------------- */
+
+/*
+ * Highlighter behind a word. The bar is a ::before sitting *under* the text
+ * (z-index -1 inside an isolated context) and only covers the lower ~42% of
+ * the line, so it reads as a marker stroke rather than a filled label. It
+ * wipes in from the left when the section scrolls into view.
+ */
+.hl {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  padding-inline: 0.12em;
+}
+
+/*
+ * Draws itself on mount via its own keyframe rather than waiting on an
+ * ancestor state class. An earlier version keyed off `[data-visible]`, which
+ * the Reveal wrapper stopped setting once it moved to Framer Motion — the bars
+ * silently stayed at scaleX(0). Self-contained is the safer coupling.
+ */
+.hl::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  bottom: 0.02em;
+  height: 0.42em;
+  border-radius: 0.14em;
+  transform-origin: left center;
+  background: var(--hl-color, var(--color-highlight));
+  opacity: 0.55;
+  animation: hl-draw 720ms cubic-bezier(0.22, 1, 0.36, 1) 160ms both;
+}
+
+@keyframes hl-draw {
+  from { transform: scaleX(0) rotate(-0.4deg); }
+  to   { transform: scaleX(1) rotate(-0.4deg); }
+}
+
+.hl-teal   { --hl-color: var(--color-teal); }
+.hl-violet { --hl-color: var(--color-violet); }
+.hl-rose   { --hl-color: var(--color-rose); }
+.hl-amber  { --hl-color: var(--color-amber); }
+.hl-green  { --hl-color: var(--color-green); }
+.hl-orange { --hl-color: var(--color-orange); }
+
+/* Dark mode: a marker over a dark ground needs less alpha, more glow */
+html[data-theme="dark"] .hl::before {
+  opacity: 0.4;
+  box-shadow: 0 0 18px -4px var(--hl-color, var(--color-highlight));
+}
+
+/* ---------------- Heavier type ---------------- */
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.022em;
+}
+
+.eyebrow {
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "myedmaster",
+    "role": "Data Science Intern",
+    "company": "MyEdMaster",
+    "location": "Remote, USA",
+    "period": "Jan 2026 – Jun 2026",
+    "start": "2026-01",
+    "end": "2026-06",
+    "stack": [
+      "Python",
+      "scikit-learn",
+      "Tableau",
+      "AWS SageMaker"
+    ],
+    "bullets": [
+      "Reviewed 400+ peer-reviewed studies across 8 diet sub-domains for a proof-of-concept health recommendation engine model",
+      "Designed Tableau dashboard tracking diet evidence quality across research domains for medical and executive stakeholders",
+      "Engineered synthetic dataset in Python modeling diet adherence, macros, and health outcomes from literature effect sizes",
+      "Built and validated Gradient Boosting model in scikit-learn predicting diet sub-score, supported SageMaker stacked deployment"
+    ]
+  },
+  {
+    "id": "canbrs",
+    "role": "Data Analyst Intern",
+    "company": "CanBrs Therapeutics",
+    "location": "Chennai, India",
+    "period": "May 2023 – Jul 2023",
+    "start": "2023-05",
+    "end": "2023-07",
+    "stack": [
+      "Python",
+      "Azure Blob Storage",
+      "Azure SQL",
+      "Power BI"
+    ],
+    "bullets": [
+      "Consolidated raw plate-reader and HPLC exports from Azure Blob Storage into a validated Azure SQL database using Python",
+      "Built validation logic in Python to catch missing wells, duplicate sample IDs, and out-of-range values before loading to SQL",
+      "Modeled dose-response curves in Python to compute IC50 with 95% CI across 20+ assay batches, quantifying variability",
+      "Delivered a Power BI dashboard with compound, batch, and timepoint drill-downs, surfacing 3 out-of-spec batches early"
+    ]
+  },
+  {
+    "id": "exposys",
+    "role": "Data Scientist Intern",
+    "company": "Exposys Data Labs",
+    "location": "Bangalore, India",
+    "period": "Nov 2021 – Mar 2022",
+    "start": "2021-11",
+    "end": "2022-03",
+    "stack": [
+      "Python",
+      "SQL",
+      "Power BI",
+      "K-Means"
+    ],
+    "bullets": [
+      "Built a multi-source ETL pipeline in Python and SQL, loading 110,000+ transaction records into a data warehouse",
+      "Applied K-means clustering on RFM features to segment 9,600 customers into 5 behavior-driven groups for targeting",
+      "Designed and ran a controlled A/B test on at-risk customers, applying hypothesis-driven analysis to guide outreach strategy",
+      "Built an interactive Power BI dashboard with drill-downs by region, age, and segment to guide demographic marketing decisions"
+    ]
+  }
+]

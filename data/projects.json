@@ -1,0 +1,608 @@
+[
+  {
+    "id": "fortunerag",
+    "title": "FortuneRAG: Serverless RAG Chatbot for Financial Analysis",
+    "short": "FortuneRAG",
+    "date": "Aug 2026",
+    "sort": "2026-08",
+    "featured": true,
+    "hasDashboard": false,
+    "summary": "A fully serverless retrieval-augmented generation pipeline on AWS that answers financial questions from live SEC filings with citation-backed responses.",
+    "categories": [
+      "GenAI / LLM",
+      "Data Engineering",
+      "Cloud"
+    ],
+    "stack": [
+      "AWS Bedrock",
+      "Claude-Sonnet",
+      "AWS Lambda",
+      "Step Functions",
+      "AWS Glue",
+      "Amazon S3",
+      "API Gateway",
+      "Streamlit",
+      "Python"
+    ],
+    "metrics": [
+      {
+        "value": "7",
+        "label": "Lambda functions"
+      },
+      {
+        "value": "3",
+        "label": "REST endpoints"
+      },
+      {
+        "value": "3-tier",
+        "label": "Bronze/Silver/Gold lake"
+      }
+    ],
+    "bullets": [
+      "Architected a serverless RAG pipeline on AWS Bedrock, Claude-Sonnet, Lambda, and API Gateway for real-time financial Q&A",
+      "Orchestrated automated ETL with AWS Step Functions and Glue, building a Bronze/Silver/Gold data pipeline in Amazon S3",
+      "Engineered 7 Python Lambda functions and 3 REST API Gateway endpoints, fully integrated with a Streamlit web front-end",
+      "Implemented semantic retrieval using vector embeddings on chunked live SEC filings for grounded, citation-backed LLM answers"
+    ],
+    "github": null,
+    "demo": null
+  },
+  {
+    "id": "customer-behavior-dashboard",
+    "title": "Customer Behavior Analytics Dashboard",
+    "short": "Customer Behavior Analytics",
+    "date": "May 2026",
+    "sort": "2026-05",
+    "featured": false,
+    "hasDashboard": true,
+    "summary": "An end-to-end Power BI dashboard turning raw transactional data into segmentation, revenue, and subscription-trend reporting.",
+    "categories": [
+      "Dashboards & BI",
+      "Analytics"
+    ],
+    "stack": [
+      "Power BI",
+      "DAX",
+      "Power Query",
+      "Excel"
+    ],
+    "metrics": [
+      {
+        "value": "End-to-end",
+        "label": "clean, model, report"
+      },
+      {
+        "value": "Cross-filter",
+        "label": "interactive KPIs"
+      }
+    ],
+    "bullets": [
+      "Built an end-to-end customer analytics dashboard by cleaning, transforming, and modeling transactional data using Power Query and DAX to support interactive business reporting",
+      "Implemented KPI metrics, cross-filtering, and interactive dashboards to analyze customer segmentation, purchasing behavior, revenue, sales performance, and subscription trends, enabling data-driven decision-making"
+    ],
+    "github": "https://github.com/preetip21ppk/Dashboard-Portfolio/blob/main/customer_behavior_dashboard.pbix",
+    "demo": null
+  },
+  {
+    "id": "weather-aqi-platform",
+    "title": "Live Weather and Air Quality Analytics Platform",
+    "short": "Weather & Air Quality Platform",
+    "date": "Dec 2025",
+    "sort": "2025-12-02",
+    "featured": true,
+    "hasDashboard": true,
+    "summary": "Hourly weather and air-quality APIs for 8 cities across 4 countries, landed through a four-layer S3 lake and surfaced in a five-page Power BI report — with 64 API runs and 88 data-quality checks passing at 100%.",
+    "categories": [
+      "Dashboards & BI",
+      "Cloud",
+      "Data Engineering"
+    ],
+    "stack": [
+      "Power BI",
+      "AWS S3",
+      "AWS Glue",
+      "Amazon Athena",
+      "EC2",
+      "Python",
+      "SQL",
+      "Parquet"
+    ],
+    "metrics": [
+      {
+        "value": "8",
+        "label": "cities, 4 countries"
+      },
+      {
+        "value": "100%",
+        "label": "API success & DQ pass rate"
+      },
+      {
+        "value": "5",
+        "label": "report pages"
+      }
+    ],
+    "bullets": [
+      "Built an end-to-end AWS analytics platform ingesting hourly weather and air quality API data for 8 global cities, transforming raw JSON into curated Parquet datasets across 4 S3 data lake layers",
+      "Created Glue catalog tables, 6 Athena reporting views, and a 5-page Power BI report: Overview, Weather Trends, Air Quality Analysis, City Comparison, and Pipeline & Data Quality",
+      "Surfaced air-quality benchmarks across the fleet — average AQI 55.26, peak 166, and 30.8K high-pollution hours — with Bengaluru worst at 89.28 AQI against London's 29.52",
+      "Instrumented the pipeline itself: 64 API runs and 88 data-quality checks tracked in-report, both holding a 100% pass rate with zero failed runs",
+      "Added city and country slicers so temperature, humidity, wind, precipitation, PM2.5 and PM10 can be compared side by side"
+    ],
+    "github": "https://github.com/preetip21ppk/Dashboard-Portfolio/blob/main/Live_Weather_Air_Quality_Dashboard.pbix",
+    "demo": "/reports/live-weather-air-quality.pdf"
+  },
+  {
+    "id": "fashion-diffusion",
+    "title": "Fashion Product Image Generation Using Diffusion Models",
+    "short": "Fashion Diffusion Models",
+    "date": "Dec 2025",
+    "sort": "2025-12-03",
+    "featured": false,
+    "hasDashboard": false,
+    "summary": "A text-to-image pipeline for fashion products, tuned across 54+ runs and benchmarked with CLIP, FID, and Inception Score.",
+    "categories": [
+      "GenAI / LLM",
+      "Computer Vision",
+      "Deep Learning"
+    ],
+    "stack": [
+      "Stable Diffusion v1.5",
+      "Kandinsky 2.2",
+      "CLIP",
+      "FID",
+      "Inception Score",
+      "Python"
+    ],
+    "metrics": [
+      {
+        "value": "4k+",
+        "label": "fashion samples"
+      },
+      {
+        "value": "54+",
+        "label": "tuning runs"
+      },
+      {
+        "value": "g=9, s=50",
+        "label": "optimal Euler config"
+      }
+    ],
+    "bullets": [
+      "Built an end-to-end text-to-image pipeline by cleaning 4k+ fashion samples for Stable Diffusion model training and testing",
+      "Performed 54+ tuning runs adjusting guidance, steps & schedulers to enhance prompt-image alignment and output quality",
+      "Applied CLIP, FID & Inception Score to evaluate images and identified Euler with guidance=9, steps=50 as optimal config",
+      "Benchmarked Stable Diffusion v1.5 vs Kandinsky 2.2 using CLIP scores & statistical tests to compare accuracy and stability"
+    ],
+    "github": "https://github.com/preetip21ppk/Fashion_Product_Image_Generation",
+    "demo": null
+  },
+  {
+    "id": "financial-reporting-agent",
+    "title": "Intelligent Financial Reporting Agent",
+    "short": "Financial Reporting Agent",
+    "date": "Oct 2025",
+    "sort": "2025-10-01",
+    "featured": true,
+    "hasDashboard": true,
+    "summary": "A conversational analytics layer over a Microsoft Fabric warehouse, combining GPT-4 RAG with Vanna AI text-to-SQL to cut reporting time by 60%.",
+    "categories": [
+      "GenAI / LLM",
+      "Dashboards & BI",
+      "Warehousing"
+    ],
+    "stack": [
+      "GPT-4",
+      "RAG",
+      "LangChain",
+      "Vanna AI",
+      "Microsoft Fabric",
+      "OneLake"
+    ],
+    "metrics": [
+      {
+        "value": "60%",
+        "label": "less manual reporting time"
+      },
+      {
+        "value": "Text-to-SQL",
+        "label": "natural-language querying"
+      }
+    ],
+    "bullets": [
+      "Architected a unified financial data warehouse on Microsoft Fabric OneLake to centralize diverse multi-source wealth data",
+      "Implemented RAG-based GPT-4 pipelines to enable contextual, conversational financial analytics for portfolio performance",
+      "Integrated Vanna AI text-to-SQL for natural-language querying, reducing manual financial reporting and analysis time by 60%",
+      "Delivered an interactive insights dashboard offering real-time trends and comprehensive data-driven investment intelligence"
+    ],
+    "github": "https://github.com/preetip21ppk/Financial_Reporting_Agent",
+    "demo": null
+  },
+  {
+    "id": "walmart-forecasting",
+    "title": "Walmart Sales Forecasting and Demand Analytics",
+    "short": "Walmart Sales Forecasting",
+    "date": "Sep 2025",
+    "sort": "2025-09-01",
+    "featured": false,
+    "hasDashboard": false,
+    "summary": "Weekly store-level demand forecasting across 45 regions, benchmarking Silverkite against Neural Prophet and shipped behind a Flask service.",
+    "categories": [
+      "Machine Learning",
+      "Forecasting"
+    ],
+    "stack": [
+      "Python",
+      "pandas",
+      "seaborn",
+      "Greykite",
+      "Silverkite",
+      "Neural Prophet",
+      "Flask"
+    ],
+    "metrics": [
+      {
+        "value": "45",
+        "label": "regions forecast"
+      },
+      {
+        "value": "RMSE / MAPE",
+        "label": "model benchmark"
+      }
+    ],
+    "bullets": [
+      "Performed EDA and preprocessing on Walmart sales data using pandas and seaborn to identify trends, seasonality, and outliers",
+      "Engineered temporal features and applied Greykite and Neural Prophet models to forecast weekly store sales across 45 regions",
+      "Assessed Silverkite and Neural Prophet models using RMSE and MAPE metrics, improving forecasting accuracy and reliability",
+      "Built an ML pipeline in Python for data loading, training, and Flask deployment, ensuring reusable and scalable forecasting"
+    ],
+    "github": "https://github.com/preetip21ppk/python_time_series",
+    "demo": null
+  },
+  {
+    "id": "california-wildfires",
+    "title": "California Wildfires Prediction & Analysis",
+    "short": "California Wildfire Prediction",
+    "date": "Jun 2025",
+    "sort": "2025-06-01",
+    "featured": false,
+    "hasDashboard": true,
+    "summary": "Seven years of wildfire records joined to weather APIs, modeled with logistic regression and visualized county-by-county in Tableau.",
+    "categories": [
+      "Machine Learning",
+      "Dashboards & BI",
+      "Analytics"
+    ],
+    "stack": [
+      "Python",
+      "Pandas",
+      "PostgreSQL",
+      "Tableau",
+      "Logistic Regression"
+    ],
+    "metrics": [
+      {
+        "value": "71%",
+        "label": "prediction accuracy"
+      },
+      {
+        "value": "1,636+",
+        "label": "fires analyzed"
+      },
+      {
+        "value": "7 yrs",
+        "label": "of data in the ETL"
+      }
+    ],
+    "bullets": [
+      "Built logistic regression model predicting California wildfires with 71% accuracy using Python and Pandas on 1,636+ fires",
+      "Analyzed weather-fire correlations using PostgreSQL, identifying peak wildfire months through statistical analysis",
+      "Engineered ETL pipeline processing 7 years of wildfire data, integrating weather APIs for feature enrichment",
+      "Designed Tableau dashboards visualizing 4,000+ acres burned across counties, driving data-driven wildfire insights"
+    ],
+    "github": "https://github.com/preetip21ppk/California_Wildfires-",
+    "demo": null
+  },
+  {
+    "id": "amazon-prime-dashboard",
+    "title": "Amazon Prime Movies & TV Shows Analytics Dashboard",
+    "short": "Amazon Prime Content Analytics",
+    "date": "Jun 2025",
+    "sort": "2025-06-02",
+    "featured": false,
+    "hasDashboard": true,
+    "summary": "9,655 Prime Video titles modeled in Power Query and DAX into a catalog explorer — growth across 1920–2021, the 80/20 Movie-to-TV mix, 519 genres, content ratings, and title origin by country.",
+    "categories": [
+      "Dashboards & BI",
+      "Analytics"
+    ],
+    "stack": [
+      "Power BI",
+      "DAX",
+      "Power Query",
+      "Excel"
+    ],
+    "metrics": [
+      {
+        "value": "9,655",
+        "label": "titles modeled"
+      },
+      {
+        "value": "519",
+        "label": "distinct genres"
+      },
+      {
+        "value": "5,771",
+        "label": "distinct directors"
+      }
+    ],
+    "bullets": [
+      "Transformed and modeled 9,655 Amazon Prime Movies & TV Shows records in Power Query and DAX into an analytics-ready dataset",
+      "Charted catalog growth as an area chart of titles by release year across a 1920–2021 span, broken out by Movie versus TV Show, with a donut showing the 80.8% / 19.2% split",
+      "Ranked the catalog by genre — Drama 986, Comedy 536, Drama/Suspense 399 — and by content rating, and mapped where titles originate on a world map",
+      "Summarised the catalog in KPI cards covering 9,655 titles, 25 content ratings, 519 distinct genres, 5,771 distinct directors, and a 1920–2021 release-year range",
+      "Designed the report on a custom dark theme branded with the Prime Video logo, with slicers and drill-through for exploration"
+    ],
+    "github": "https://github.com/preetip21ppk/Dashboard-Portfolio/blob/main/Amazon%20Prime%20Dashboard%20(1).pbix",
+    "demo": null
+  },
+  {
+    "id": "eeg-seizure-detection",
+    "title": "EEG Seizure Detection Using Deep Learning",
+    "short": "EEG Seizure Detection",
+    "date": "Jan 2025",
+    "sort": "2025-01-01",
+    "featured": true,
+    "hasDashboard": false,
+    "summary": "A CNN-RNN hybrid trained on over a million EEG signals from CHB-MIT and Bonn, built as an early-alert prototype for neurologists.",
+    "categories": [
+      "Deep Learning",
+      "Healthcare"
+    ],
+    "stack": [
+      "Python",
+      "TensorFlow",
+      "Keras",
+      "CHB-MIT",
+      "Bonn EEG"
+    ],
+    "metrics": [
+      {
+        "value": "1M+",
+        "label": "EEG signals preprocessed"
+      },
+      {
+        "value": "CNN-RNN",
+        "label": "hybrid architecture"
+      },
+      {
+        "value": "2",
+        "label": "benchmark datasets"
+      }
+    ],
+    "bullets": [
+      "Preprocessed 1M+ EEG signals from CHB-MIT and Bonn datasets to extract temporal and spectral features for seizure analysis",
+      "Developed CNN-RNN hybrid model in Python/TensorFlow, achieving strong accuracy across cross-validated seizure detection",
+      "Designed experimental pipeline with cross-validation and error analysis to compare models and improve generalisation",
+      "Delivered prototype enabling early seizure alerts, supporting neurologist decision-making and real-time monitoring"
+    ],
+    "github": "https://github.com/preetip21ppk/EEG_Classification_Model",
+    "demo": null
+  },
+  {
+    "id": "airport-performance",
+    "title": "Airport Performance Optimization",
+    "short": "Airport Performance Optimization",
+    "date": "Dec 2024",
+    "sort": "2024-12-01",
+    "featured": false,
+    "hasDashboard": true,
+    "summary": "Hybrid SQL/NoSQL schema design and Python ETL behind a Power BI view of flight delays, throughput, and on-time performance across terminals.",
+    "categories": [
+      "Dashboards & BI",
+      "Data Engineering",
+      "Warehousing"
+    ],
+    "stack": [
+      "MySQL",
+      "MongoDB",
+      "Python",
+      "UML",
+      "EER Modeling",
+      "Power BI"
+    ],
+    "metrics": [
+      {
+        "value": "SQL + NoSQL",
+        "label": "hybrid schema design"
+      },
+      {
+        "value": "Real-time",
+        "label": "multi-terminal KPI tracking"
+      }
+    ],
+    "bullets": [
+      "Analyzed airport operations data to identify inefficiencies and optimize real-time KPI tracking across multiple terminals, while designing scalable SQL/NoSQL database schemas using UML and EER modeling and automating Python ETL workflows to streamline performance reporting",
+      "Developed interactive Power BI dashboards to visualize flight delays, passenger throughput, and on-time performance metrics, improving data accuracy, reducing reporting delays, and enabling faster decision-making for airport management"
+    ],
+    "github": null,
+    "demo": null
+  },
+  {
+    "id": "saac-mental-health-chatbot",
+    "title": "AI/ML Mental Health Chatbot (SAAC)",
+    "short": "SAAC Mental Health Chatbot",
+    "date": "Apr 2024",
+    "sort": "2024-04-01",
+    "featured": false,
+    "hasDashboard": false,
+    "summary": "An NLP support chatbot with voice and text input, built for accessibility and continuity of care rather than one-off answers.",
+    "categories": [
+      "NLP",
+      "Deep Learning",
+      "Healthcare"
+    ],
+    "stack": [
+      "Python",
+      "NLP",
+      "Keras",
+      "TensorFlow",
+      "Web Speech API"
+    ],
+    "metrics": [
+      {
+        "value": "92%",
+        "label": "intent classification accuracy"
+      },
+      {
+        "value": "24/7",
+        "label": "voice + text support"
+      }
+    ],
+    "bullets": [
+      "Engineered an NLP-based mental health chatbot (SAAC) using Keras and TensorFlow, offering 24/7 personalized support",
+      "Crafted a user-friendly interface with text and voice input via Web Speech API, enhancing accessibility",
+      "Achieved 92% accuracy in intent classification, ensuring precise user interactions and effective mental health support",
+      "Enabled chat history tracking, improving follow-up care and continuous user engagement"
+    ],
+    "github": "https://github.com/preetip21ppk/Mental_Health_Chatbot",
+    "demo": null
+  },
+  {
+    "id": "3d-pose-ergonomics",
+    "title": "Real-Time 3D Human Pose Estimation for Ergonomics",
+    "short": "3D Pose Estimation for Ergonomics",
+    "date": "Jan 2024",
+    "sort": "2024-01-01",
+    "featured": false,
+    "hasDashboard": false,
+    "summary": "Live posture monitoring with YOLOv8x-pose and MediaPipe that flags text-neck and misalignment before it becomes a musculoskeletal problem.",
+    "categories": [
+      "Computer Vision",
+      "Deep Learning",
+      "Healthcare"
+    ],
+    "stack": [
+      "Python",
+      "YOLOv8x-pose",
+      "MediaPipe",
+      "Deep Learning"
+    ],
+    "metrics": [
+      {
+        "value": "91.2%",
+        "label": "pose estimation mAP"
+      },
+      {
+        "value": "500K+",
+        "label": "kinematic keypoints"
+      },
+      {
+        "value": "Live",
+        "label": "on-screen alerts"
+      }
+    ],
+    "bullets": [
+      "Built 3D posture estimation system using YOLOv8x-pose & MediaPipe, achieving 91.2% mAP for ergonomic monitoring",
+      "Processed 500K+ kinematic keypoints to classify posture deviations and detect poor ergonomic alignment across frames",
+      "Integrated live on-screen posture alerts to notify users during prolonged misalignment, reducing ergonomic strain risk",
+      "Enhanced workplace health compliance by enabling real-time correction for text-neck and musculoskeletal disorder prevention"
+    ],
+    "github": "https://github.com/preetip21ppk/-3D_Human_Pose_Estimation",
+    "demo": null
+  },
+  {
+    "id": "ds-salaries-dashboard",
+    "title": "Data Science Job Salaries Dashboard",
+    "short": "Data Science Salaries Dashboard",
+    "date": "Sep 2026",
+    "sort": "2026-09-20",
+    "featured": false,
+    "hasDashboard": true,
+    "summary": "A Tableau explorer over global data-science compensation — salary by experience level, job title, company size and country, filterable by location and role.",
+    "categories": [
+      "Dashboards & BI",
+      "Analytics"
+    ],
+    "stack": [
+      "Tableau",
+      "Mapbox",
+      "SQL"
+    ],
+    "metrics": [
+      {
+        "value": "$600K",
+        "label": "top average, Principal Data Engineer"
+      },
+      {
+        "value": "97.5%",
+        "label": "of roles full-time"
+      },
+      {
+        "value": "61.4%",
+        "label": "senior-level"
+      }
+    ],
+    "bullets": [
+      "Built a Tableau dashboard over a global data-science salary dataset, cross-filterable by company location and job title",
+      "Ranked average salary by job title down to the experience-level split — Principal Data Engineer topping out at $600,000, Research Scientist at $450,000, and ML Engineer at $270,000",
+      "Profiled the market by company size (61.4% medium, 29.9% large, 8.7% small) and by seniority (61.4% senior, 25.4% intermediate, 8.7% entry level)",
+      "Mapped average salary by country on a Mapbox layer spanning $9,272 to $87,852, alongside a top-10 employee-residence ranking led by the US",
+      "Surfaced employment mix at a glance: 97.5% full-time against 0.9% freelance and 0.6% part-time"
+    ],
+    "github": "https://github.com/preetip21ppk/Dashboard-Portfolio/blob/main/Job%20Salaries%20by%20Location%20and%20Experience%20level%20Dashboard.twb",
+    "demo": "/reports/data-science-salaries.pdf"
+  },
+  {
+    "id": "clinical-notes-nlp",
+    "title": "Clinical Notes Disease Classification using NLP & Transformers",
+    "short": "Clinical Notes Disease Classification",
+    "date": "Sep 2026",
+    "sort": "2026-09-21",
+    "featured": false,
+    "hasDashboard": false,
+    "summary": "A multi-model NLP framework that reads unstructured clinical narratives and classifies them into 10 diseases — from TF–IDF and XGBoost through to BioClinicalBERT, with XGBoost reaching 98.12% test accuracy.",
+    "categories": [
+      "NLP",
+      "Machine Learning",
+      "Deep Learning",
+      "Healthcare"
+    ],
+    "stack": [
+      "Python",
+      "scikit-learn",
+      "XGBoost",
+      "TensorFlow",
+      "Keras",
+      "HuggingFace Transformers",
+      "BERT",
+      "RoBERTa",
+      "BioClinicalBERT",
+      "NLTK",
+      "spaCy",
+      "Pandas"
+    ],
+    "metrics": [
+      {
+        "value": "98.12%",
+        "label": "XGBoost test accuracy"
+      },
+      {
+        "value": "18,885",
+        "label": "clinical notes, 10 classes"
+      },
+      {
+        "value": "10+",
+        "label": "models benchmarked"
+      }
+    ],
+    "bullets": [
+      "Built an NLP pipeline classifying diseases from 18,885 clinical notes across 10 classes, drawn from the 160,000-note AGBonnet Augmented Clinical Notes corpus",
+      "Engineered preprocessing with negation detection (“no history of…”, “denies…”) and medical abbreviation expansion (htn → hypertension, dm → diabetes mellitus, cad → coronary artery disease) to reduce mislabeling",
+      "Trained and benchmarked 10+ models from Logistic Regression to BioClinicalBERT; XGBoost with early stopping took first place at 98.12% accuracy, ahead of a stacking classifier at 98.09%",
+      "Engineered TF–IDF features (uni + bi-gram, 30K max) for classical ML and sequence-encoding pipelines at length 256 feeding CNN, LSTM and BiLSTM models",
+      "Applied a stratified 70/10/20 split and weighted metrics to handle severe class imbalance — cancer alone accounts for 7,402 of the notes against 50–700 for the smallest classes"
+    ],
+    "github": "https://github.com/preetip21ppk/Clinical_Notes_NLP",
+    "demo": null
+  }
+]

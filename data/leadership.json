@@ -1,0 +1,24 @@
+[
+  {
+    "id": "daeso-president",
+    "role": "President",
+    "org": "Data Analytics Engineering Student Organization",
+    "institution": "Northeastern University",
+    "period": "Jan 2026 – Aug 2026",
+    "sort": "2026-01",
+    "hue": "teal",
+    "logo": "/org/daeso.png",
+    "short": "DAESO"
+  },
+  {
+    "id": "ace-vice-president",
+    "role": "Vice President",
+    "org": "Association of Computer Engineers",
+    "institution": "Sri Venkateswara College of Engineering",
+    "period": "Jan 2023 – Apr 2024",
+    "sort": "2023-01",
+    "hue": "violet",
+    "logo": "/org/ace.png",
+    "short": "ACE"
+  }
+]

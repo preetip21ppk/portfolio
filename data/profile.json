@@ -1,0 +1,57 @@
+{
+  "name": "Preeti Purnimaa Kannan",
+  "title": "Data Analytics Engineer",
+  "tagline": "I build the whole path — raw source to ETL to warehouse to model to the dashboard someone actually decides with.",
+  "location": "Boston, MA",
+  "email": "kannan.pr@northeastern.edu",
+  "phone": "(857) 415-8621",
+  "linkedin": "https://linkedin.com/in/preeti-purnimaa",
+  "github": "https://github.com/preetip21ppk",
+  "resumeUrl": "/resume.pdf",
+  "stats": [
+    {
+      "value": "20",
+      "label": "Projects shipped"
+    },
+    {
+      "value": "14",
+      "label": "Dashboards built"
+    },
+    {
+      "value": "3",
+      "label": "Internships"
+    },
+    {
+      "value": "3.91",
+      "label": "Graduate GPA"
+    }
+  ],
+  "about": [
+    "I'm a Data Analytics Engineer finishing an M.S. at Northeastern University, working at the intersection of data engineering, machine learning, and business intelligence. Across my internships and projects, the pattern has stayed consistent: I take messy, multi-source data, build the pipeline that makes it trustworthy, model it, and then put it in front of people in a form they can act on. That last step matters most to me — a pipeline nobody reads from is just plumbing.",
+    "My toolkit spans Python, SQL, AWS, Power BI, Tableau, and advanced data visualization, which I use to build end-to-end solutions for real-time decision-making at scale. I'm now looking for roles in data analytics, data engineering, or business intelligence where I can design scalable pipelines, develop predictive models, and integrate multimodal datasets into dashboards that drive measurable business and social impact."
+  ],
+  "education": [
+    {
+      "school": "Northeastern University",
+      "degree": "Master of Science, Data Analytics Engineering",
+      "location": "Boston, MA",
+      "period": "Sept 2024 – Aug 2026",
+      "detail": "GPA 3.91",
+      "image": "/edu/northeastern.jpg",
+      "short": "NU",
+      "hue": "rose",
+      "college": ""
+    },
+    {
+      "school": "Anna University",
+      "degree": "Bachelor of Engineering, Computer Science and Engineering",
+      "location": "Sriperumbudur, Chennai, India",
+      "period": "Jun 2020 – Jun 2024",
+      "detail": "",
+      "image": "/edu/svce.jpg",
+      "short": "SVCE",
+      "hue": "teal",
+      "college": "Sri Venkateswara College of Engineering"
+    }
+  ]
+}

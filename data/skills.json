@@ -1,0 +1,28 @@
+[
+  {
+    "group": "Programming & Querying",
+    "items": ["Python", "NumPy", "Pandas", "Scikit-learn", "GeoPandas", "SQL"]
+  },
+  {
+    "group": "Data Engineering",
+    "items": ["ETL / ELT", "Snowflake"]
+  },
+  {
+    "group": "Data Visualization",
+    "items": ["Tableau", "Power BI", "MS Excel", "MS Word", "MS PowerPoint"]
+  },
+  {
+    "group": "Cloud & Infrastructure",
+    "items": [
+      "AWS Redshift",
+      "SageMaker",
+      "Glue",
+      "Athena",
+      "Lambda",
+      "S3",
+      "Step Functions",
+      "Azure Blob Storage",
+      "Azure SQL"
+    ]
+  }
+]
