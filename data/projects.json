@@ -396,7 +396,7 @@
     "sort": "2024-12-01",
     "featured": false,
     "hasDashboard": true,
-    "summary": "Hybrid SQL/NoSQL schema design and Python ETL behind a Power BI view of flight delays, throughput, and on-time performance across terminals.",
+    "summary": "A million analytical flights measured against an 85% on-time SLA — the airport lands at 80.89%, a 4.11-point miss, with no carrier in the fleet clearing the bar.",
     "categories": [
       "Dashboards & BI",
       "Data Engineering",
@@ -412,20 +412,28 @@
     ],
     "metrics": [
       {
-        "value": "SQL + NoSQL",
-        "label": "hybrid schema design"
+        "value": "1M",
+        "label": "analytical flights"
       },
       {
-        "value": "Real-time",
-        "label": "multi-terminal KPI tracking"
+        "value": "80.89%",
+        "label": "on-time vs 85% target"
+      },
+      {
+        "value": "-4.11pp",
+        "label": "gap to target"
       }
     ],
     "bullets": [
-      "Analyzed airport operations data to identify inefficiencies and optimize real-time KPI tracking across multiple terminals, while designing scalable SQL/NoSQL database schemas using UML and EER modeling and automating Python ETL workflows to streamline performance reporting",
-      "Developed interactive Power BI dashboards to visualize flight delays, passenger throughput, and on-time performance metrics, improving data accuracy, reducing reporting delays, and enabling faster decision-making for airport management"
+      "Designed a hybrid MySQL and MongoDB schema with UML and EER modelling, loaded by a Python ETL over roughly a million analytical flights",
+      "Scored on-time performance against an 85% SLA target in Power BI: 80.89% actual, a 4.11-point gap, flagged Non-Compliant against a progress-to-target gauge",
+      "Split every scheduled flight by disposition — 824K on time (78.88%), 195K delayed (18.64%), 24K cancelled (2.27%) and 2K diverted (0.21%)",
+      "Ranked on-time performance by carrier and surfaced that not one of them meets the target, from Alaska at the top to PSA Airlines at the bottom",
+      "Attributed delay hours by cause — previous flight late 39.29%, airline operations 32.26%, air traffic control 21.16% — and ranked the ten busiest airports by average minutes late, led by Detroit",
+      "Added airline and date-range slicers plus a day-of-week view, exposing Tuesday as the strongest day and Thursday the weakest"
     ],
-    "github": null,
-    "demo": null
+    "github": "https://github.com/preetip21ppk/airport-performance-optimization",
+    "demo": "/reports/airport-performance.pdf"
   },
   {
     "id": "saac-mental-health-chatbot",

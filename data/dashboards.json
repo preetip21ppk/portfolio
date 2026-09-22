@@ -118,22 +118,29 @@
     "projectId": "airport-performance",
     "domain": "Aviation",
     "sort": "2024-12",
-    "highlight": "Multi-terminal real-time KPIs",
-    "description": "Operational view of flight delays, passenger throughput, and on-time performance across terminals, fed by Python ETL over MySQL and MongoDB.",
+    "highlight": "80.89% on-time vs an 85% target",
+    "description": "Two pages over a million analytical flights: on-time performance against an 85% SLA target, then a breakdown of where the delays actually come from — by cause, by airport and by day of the week.",
     "views": [
-      "Flight delay analysis",
-      "Passenger throughput",
-      "On-time performance"
+      "On-time vs 85% SLA target",
+      "Daily on-time trend",
+      "Flight disposition split",
+      "On-time by carrier",
+      "Delay causes",
+      "Worst-delay airports",
+      "On-time by day of week"
     ],
-    "image": null,
+    "image": "/dashboards/airport-1.jpg",
     "embedUrl": null,
-    "liveUrl": null,
-    "audience": "Airport operations",
-    "builtOn": "Python ETL over a hybrid MySQL + MongoDB schema",
+    "liveUrl": "/reports/airport-performance.pdf",
+    "audience": "Airport operations & airline account managers",
+    "builtOn": "Python ETL over a hybrid MySQL + MongoDB schema, modelled in Power BI",
     "answers": [
-      "Which terminals are driving delay, and when?",
-      "How is passenger throughput trending against capacity?",
-      "Is on-time performance improving or slipping?"
+      "Are we hitting the 85% on-time target, and by how much are we missing it?",
+      "Is any carrier meeting the target, or is the gap across the board?",
+      "What is causing the delays, and which airports suffer worst?"
+    ],
+    "extraImages": [
+      "/dashboards/airport-2.jpg"
     ]
   },
   {

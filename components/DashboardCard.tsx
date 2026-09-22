@@ -84,6 +84,22 @@ export default function DashboardCard({ dashboard }: { dashboard: Dashboard }) {
         )}
       </div>
 
+      {/* further report pages, if the dashboard runs to more than one */}
+      {dashboard.extraImages?.length ? (
+        <div className="grid gap-px border-b border-line bg-line sm:grid-cols-2">
+          {dashboard.extraImages.map((src, i) => (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              key={src}
+              src={src}
+              alt={`${dashboard.name} dashboard, page ${i + 2}`}
+              loading="lazy"
+              className="aspect-[16/9] w-full bg-plane object-cover object-top"
+            />
+          ))}
+        </div>
+      ) : null}
+
       <div className="flex flex-1 flex-col p-6">
         <p className="eyebrow">{dashboard.domain}</p>
         <h3 className="mt-2 text-xl leading-snug font-bold tracking-tight">
