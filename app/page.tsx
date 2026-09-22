@@ -59,8 +59,9 @@ export default function HomePage() {
 
           <MaskedHeading
             text={profile.name}
+            gradientFrom={0}
             delay={0.12}
-            className="max-w-[16ch] text-[clamp(2.5rem,min(6.4vw,10vh),5.25rem)] leading-[1.03] font-bold tracking-tight text-accent-text"
+            className="max-w-[16ch] text-[clamp(2.5rem,min(6.4vw,10vh),5.25rem)] leading-[1.03] font-bold tracking-tight text-ink"
           />
 
           <div

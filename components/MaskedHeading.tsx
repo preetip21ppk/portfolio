@@ -40,9 +40,12 @@ export default function MaskedHeading({
                 initial={reduced ? { opacity: 0 } : { y: "110%" }}
                 animate={reduced ? { opacity: 1 } : { y: 0 }}
                 transition={{ duration: 0.85, ease: EASE, delay: delay + i * 0.09 }}
-                className={`block ${gradient ? "heading-gradient" : ""}`}
+                className="block"
               >
-                {word}
+                {/* The gradient sits on a child, never on the element Framer
+                    transforms: background-clip:text with a transparent colour
+                    stops painting when the clipped box itself is transformed. */}
+                {gradient ? <span className="heading-gradient">{word}</span> : word}
               </motion.span>
             </span>
           );

@@ -1236,12 +1236,10 @@ html[data-theme="dark"] {
  * carries a transform, which is what killed an earlier attempt at this.
  */
 .heading-gradient {
-  background: linear-gradient(
-    100deg,
-    var(--color-teal) 0%,
-    var(--color-violet) 55%,
-    var(--color-rose) 100%
-  );
+  /* Deep blues on the light page: navy -> deep sky -> dark cyan. Every stop
+     clears 4.5:1 against the plane and against its aurora-tinted worst case
+     (9.60 / 7.01 / 8.45 on plain, 8.82 / 6.44 / 7.76 tinted). */
+  background: linear-gradient(100deg, #1e3a8a 0%, #075985 52%, #164e63 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1472,12 +1470,9 @@ html[data-theme="dark"] .rule-soft {
 
 /* Headline gradient shifts to the bright end of the dark palette */
 html[data-theme="dark"] .heading-gradient {
-  background: linear-gradient(
-    100deg,
-    var(--color-teal) 0%,
-    var(--color-violet) 55%,
-    var(--color-rose) 100%
-  );
+  /* Same blue family, inverted for the deep-sea background — dark navy would
+     vanish here. 7.89 / 9.82 / 11.41 against the lit worst case. */
+  background: linear-gradient(100deg, #93c5fd 0%, #67e8f9 52%, #a5f3fc 100%);
   -webkit-background-clip: text;
   background-clip: text;
 }
