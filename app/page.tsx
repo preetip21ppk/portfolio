@@ -3,7 +3,6 @@ import {
   skills,
   projects,
 } from "@/lib/content";
-import PipelineFlow from "@/components/PipelineFlow";
 import TechMarquee from "@/components/TechMarquee";
 import TiltCard from "@/components/TiltCard";
 import Reveal from "@/components/Reveal";
@@ -177,19 +176,6 @@ export default function HomePage() {
             </div>
           </Reveal>
         </div>
-      </section>
-
-      {/* ── Method ───────────────────────────────────────────────────────── */}
-      <section className="shell border-t border-line py-16 sm:py-24">
-        <SectionHead
-          eyebrow="Method"
-          title="Source to decision, end to end"
-          hue={2}
-          lead="Every project follows the same path. The dashboard at the end is only as trustworthy as the pipeline behind it."
-        />
-        <Reveal delay={100} from="up" className="mt-10">
-          <PipelineFlow />
-        </Reveal>
       </section>
 
       {/* ── Education ────────────────────────────────────────────────────── */}
