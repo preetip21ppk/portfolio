@@ -2,7 +2,6 @@ import {
   profile,
   skills,
   projects,
-  projectCategories,
 } from "@/lib/content";
 import PipelineFlow from "@/components/PipelineFlow";
 import TechMarquee from "@/components/TechMarquee";
@@ -15,7 +14,7 @@ import Portrait from "@/components/Portrait";
 import SectionHead from "@/components/SectionHead";
 import EducationCard from "@/components/EducationCard";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
-import ProjectsExplorer from "@/components/ProjectsExplorer";
+import ProjectCard from "@/components/ProjectCard";
 
 export default function HomePage() {
   const marqueeItems = skills.flatMap((g) => g.items).filter((s) => s.length < 22);
@@ -218,8 +217,14 @@ export default function HomePage() {
       {/* ── Projects ─────────────────────────────────────────────────────── */}
       <section id="projects" className="shell scroll-mt-24 border-t border-line py-16 sm:py-24">
         <SectionHead eyebrow="Portfolio" title="What I have built" hue={1} />
-        <div className="mt-10">
-          <ProjectsExplorer projects={projects} categories={projectCategories} />
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((p, i) => (
+            <Reveal key={p.id} delay={Math.min((i % 3) * 80, 240)} className="h-full">
+              <TiltCard>
+                <ProjectCard project={p} />
+              </TiltCard>
+            </Reveal>
+          ))}
         </div>
       </section>
 
