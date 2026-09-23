@@ -44,7 +44,7 @@
       "Engineered 7 Python Lambda functions and 3 REST API Gateway endpoints, fully integrated with a Streamlit web front-end",
       "Implemented semantic retrieval using vector embeddings on chunked live SEC filings for grounded, citation-backed LLM answers"
     ],
-    "github": null,
+    "github": "https://github.com/preetip21ppk/Fortune500-RAG",
     "demo": null
   },
   {
@@ -266,7 +266,7 @@
     "sort": "2025-06-01",
     "featured": false,
     "hasDashboard": true,
-    "summary": "Seven years of wildfire records joined to weather APIs, modeled with logistic regression and visualized county-by-county in Tableau.",
+    "summary": "2,673 California wildfires and 11.2 million burned acres across 57 counties, joined to weather data and mapped county-by-county in Tableau — with ignition rate tracked against how long it had been dry.",
     "categories": [
       "Machine Learning",
       "Dashboards & BI",
@@ -281,23 +281,24 @@
     ],
     "metrics": [
       {
-        "value": "71%",
-        "label": "prediction accuracy"
+        "value": "11.2M",
+        "label": "acres burned"
       },
       {
-        "value": "1,636+",
-        "label": "fires analyzed"
+        "value": "2,673",
+        "label": "fires analysed"
       },
       {
-        "value": "7 yrs",
-        "label": "of data in the ETL"
+        "value": "57",
+        "label": "counties covered"
       }
     ],
     "bullets": [
-      "Built logistic regression model predicting California wildfires with 71% accuracy using Python and Pandas on 1,636+ fires",
-      "Analyzed weather-fire correlations using PostgreSQL, identifying peak wildfire months through statistical analysis",
-      "Engineered ETL pipeline processing 7 years of wildfire data, integrating weather APIs for feature enrichment",
-      "Designed Tableau dashboards visualizing 4,000+ acres burned across counties, driving data-driven wildfire insights"
+      "Built a Python and Pandas ETL over 2,673 California wildfire records spanning 2015–2024, enriched with weather API features and landed in PostgreSQL",
+      "Mapped 11,249,013 burned acres across all 57 affected counties on a Mapbox choropleth in Tableau, with Butte, Mendocino and Siskiyou topping the acreage ranking",
+      "Charted seasonality and found fire season concentrated in July and August, which together account for the large majority of acres burned",
+      "Tracked acres burned year on year, surfacing 2020 as the worst season in the window at roughly 2.9 million acres, with 2021 close behind",
+      "Modelled ignition rate against consecutive dry days, showing risk climbing sharply after a month without rain and peaking in the 31–90 day band"
     ],
     "github": "https://github.com/preetip21ppk/California_Wildfires-",
     "demo": null

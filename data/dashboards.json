@@ -63,22 +63,24 @@
     "projectId": "california-wildfires",
     "domain": "Climate & Public Safety",
     "sort": "2025-06-01",
-    "highlight": "4,000+ acres burned mapped",
-    "description": "County-level view of burned acreage and seasonality, backed by a 7-year ETL that enriches fire records with weather API features.",
+    "highlight": "11.2M acres, 2,673 fires, 57 counties",
+    "description": "County-level view of 2,673 California wildfires and 11.2 million burned acres across 57 counties, with a Mapbox choropleth, seasonality and year-on-year trends, and ignition rate plotted against consecutive dry days.",
     "views": [
+      "Fire map by county",
       "Acres burned by county",
-      "Peak-month seasonality",
-      "Weather-fire correlation"
+      "Acres burned by month",
+      "Acres burned by year",
+      "Fire risk vs dry days"
     ],
-    "image": null,
+    "image": "/dashboards/wildfires.jpg",
     "embedUrl": null,
     "liveUrl": null,
     "audience": "Public-safety and land-management planners",
-    "builtOn": "Seven years of fire records joined to weather APIs in PostgreSQL",
+    "builtOn": "Fire records joined to weather APIs in PostgreSQL, mapped in Tableau over Mapbox",
     "answers": [
-      "Which counties lose the most acreage, and is that changing?",
-      "When in the year does fire risk actually peak?",
-      "How closely does weather track fire activity?"
+      "Which counties lose the most acreage — and is it the same ones every year?",
+      "When in the year does fire season actually peak?",
+      "How much does a long dry spell raise the ignition rate?"
     ]
   },
   {
