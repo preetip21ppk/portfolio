@@ -30,11 +30,6 @@ export default async function ProjectPage({ params }: Params) {
 
   const linkedDashboards = getDashboardsForProject(project.id);
 
-  /* Name the thing on the CTA: a recruiter should know whether they are about
-     to get an interactive report, a PDF or a video before they click. */
-  const demoLabel = project.demo
-    ? artifactLabel(project.demo, linkedDashboards[0]?.tool)
-    : "Live demo";
 
   return (
     <article className="shell py-14 sm:py-20">
@@ -69,34 +64,19 @@ export default async function ProjectPage({ params }: Params) {
         </h1>
         <p className="mt-4 text-lg leading-relaxed text-ink-2">{project.summary}</p>
 
-        {(project.github || project.demo) && (
+        {project.github && (
           <div className="mt-6 flex flex-wrap gap-3">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shine btn-lift inline-flex items-center gap-2 rounded-lg bg-accent-fill px-4 py-2.5 text-sm font-semibold text-on-fill shadow-lg shadow-accent-fill/25 hover:bg-accent-hover"
-              >
-                View project
-                <span aria-hidden className="text-xs">
-                  &#8599;
-                </span>
-              </a>
-            )}
-            {project.demo && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-lift inline-flex items-center gap-2 rounded-lg border border-line bg-surface px-4 py-2.5 text-sm font-medium text-ink-2 hover:border-primary-line hover:text-primary-text"
-              >
-                {demoLabel}
-                <span aria-hidden className="text-xs">
-                  &#8599;
-                </span>
-              </a>
-            )}
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shine btn-lift inline-flex items-center gap-2 rounded-lg bg-accent-fill px-4 py-2.5 text-sm font-semibold text-on-fill shadow-lg shadow-accent-fill/25 hover:bg-accent-hover"
+            >
+              View project
+              <span aria-hidden className="text-xs">
+                &#8599;
+              </span>
+            </a>
           </div>
         )}
       </header>

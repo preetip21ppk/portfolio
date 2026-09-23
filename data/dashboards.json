@@ -163,7 +163,7 @@
     ],
     "image": "/dashboards/ds-salaries.jpg",
     "embedUrl": null,
-    "liveUrl": null,
+    "liveUrl": "/reports/data-science-salaries.pdf",
     "audience": "Candidates & compensation benchmarking",
     "builtOn": "Global salary survey modelled in Tableau with a Mapbox geography layer",
     "answers": [

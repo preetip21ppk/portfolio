@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { artifactLabel, getProject, isLiveArtifact, type Dashboard } from "@/lib/content";
+import { getProject, isLiveArtifact, type Dashboard } from "@/lib/content";
 import DashboardEmbed from "@/components/DashboardEmbed";
 
 /**
@@ -122,18 +122,6 @@ export default function DashboardCard({ dashboard }: { dashboard: Dashboard }) {
         </dl>
 
         <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 pt-5">
-          {dashboard.liveUrl && (
-            <a
-              href={dashboard.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shine btn-lift inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-xs font-semibold text-on-fill"
-              style={{ background: hue }}
-            >
-              {artifactLabel(dashboard.liveUrl, dashboard.tool)}
-              <span aria-hidden>&#8599;</span>
-            </a>
-          )}
           {project && (
             <Link
               href={`/projects/${project.id}`}
