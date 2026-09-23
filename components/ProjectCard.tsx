@@ -15,14 +15,16 @@ export default function ProjectCard({ project }: { project: Project }) {
         className="absolute inset-y-0 left-0 w-0.5 origin-top scale-y-0 bg-primary transition-transform duration-300 ease-out group-hover:scale-y-100 motion-reduce:transition-none"
       />
 
-      <div className="flex items-start justify-between gap-3">
-        <span className="eyebrow">{project.date}</span>
-        {hasDashboard && (
+      {/* No date on the tile: the work is judged on what it is, not when it
+          landed, and a 2026 stamp on every card just dates the portfolio.
+          `sort` still orders the grid; it is simply not shown. */}
+      {hasDashboard && (
+        <div className="flex justify-end">
           <span className="rounded-full border border-primary-line bg-primary-soft px-2 py-0.5 text-[0.6875rem] font-medium text-primary-text">
             Dashboard
           </span>
-        )}
-      </div>
+        </div>
+      )}
 
       <h3 className="mt-2.5 text-base font-semibold leading-snug tracking-tight transition-colors duration-200 group-hover:text-primary-text">
         <Link href={`/projects/${project.id}`} className="before:absolute before:inset-0">

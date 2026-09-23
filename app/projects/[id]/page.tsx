@@ -53,7 +53,7 @@ export default async function ProjectPage({ params }: Params) {
 
       <header className="animate-rise mt-6 max-w-3xl">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="eyebrow">{project.date}</span>
+          {/* Date dropped here too, to match the tiles */}
           {project.categories.map((c) => (
             <span
               key={c}
