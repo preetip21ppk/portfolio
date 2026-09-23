@@ -54,8 +54,6 @@ export type Dashboard = {
   /** The data layer underneath, in one line. */
   builtOn: string;
   image: string | null;
-  /** Further report pages, shown as a strip under the lead screenshot. */
-  extraImages?: string[];
   /** iframe src for an embeddable dashboard (Power BI "Publish to web", Tableau Public). */
   embedUrl: string | null;
   /** Plain link, opened in a new tab, for dashboards that cannot be embedded. */

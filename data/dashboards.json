@@ -138,9 +138,6 @@
       "Are we hitting the 85% on-time target, and by how much are we missing it?",
       "Is any carrier meeting the target, or is the gap across the board?",
       "What is causing the delays, and which airports suffer worst?"
-    ],
-    "extraImages": [
-      "/dashboards/airport-2.jpg"
     ]
   },
   {

@@ -9,3 +9,7 @@ next-env.d.ts
 
 # Local editor/agent tooling
 .claude
+
+# Stray saved web pages dropped into the project folder
+Pinterest.html
+Pinterest_files/
