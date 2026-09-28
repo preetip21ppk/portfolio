@@ -128,7 +128,7 @@
       "Instrumented the pipeline itself: 64 API runs and 88 data-quality checks tracked in-report, both holding a 100% pass rate with zero failed runs",
       "Added city and country slicers so temperature, humidity, wind, precipitation, PM2.5 and PM10 can be compared side by side"
     ],
-    "github": "https://github.com/preetip21ppk/Dashboard-Portfolio/blob/main/Live_Weather_Air_Quality_Dashboard.pbix",
+    "github": "https://github.com/preetip21ppk/powerbi-live-weather-air-quality",
     "demo": "/reports/live-weather-air-quality.pdf"
   },
   {
